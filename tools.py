@@ -11,6 +11,8 @@ def process_data(filters):
     T_files = [None]*len(selection)
     DC_T = [None]*len(selection)
     DC_R = [None]*len(selection)
+    PMT_T = [None]*len(selection)
+    PMT_R = [None]*len(selection)
     cnt_files = 0
     for index, row in selection.iterrows():
         data = utils.get_path_to_data(row)
@@ -20,5 +22,7 @@ def process_data(filters):
         DC_R[cnt_files]=float(row["DCR"])
         filenames[cnt_files]=row["Filename"]
         ID[cnt_files]=row["FilterID"]
+        PMT_T = row["TReadout"]
+        PMT_R = row["RReadout"]
         cnt_files += 1
-    return filenames, ID, data_files, T_files, DC_T, DC_R
+    return filenames, ID, data_files, T_files, DC_T, DC_R, PMT_T, PMT_R
