@@ -31,10 +31,10 @@ def R(dataset, PMT_T, PMT_R, DCT, DCR):
     IF_T = (dataset["TF"]-DCT)/QE_T["QE"]
     INF_T = (dataset["TNF"]-DCT)/QE_T["QE"]
     IF_R = (dataset["RF"]-DCR)/QE_R["QE"]
-    R = 100*((IF_R/np.max(IF_R))/(INF_T/np.max(INF_T)))
+    R = 100*(IF_R/INF_T)
     T = 100*(IF_T/INF_T)
     A = 100-(R + T)
-    return R/(np.max(R)), dataset["WL"], A, T, IF_T, INF_T, IF_R
+    return (R/np.max(R))*100, dataset["WL"], A, T, IF_T, INF_T, IF_R
 
 
 

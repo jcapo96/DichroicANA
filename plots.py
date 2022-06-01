@@ -37,3 +37,9 @@ def draw_A(dataset, PMT_T, PMT_R, DCT, DCR, ID):
         plt.xlabel("Wavelenegth (nm)")
         plt.ylabel("Absorbance %")
         plt.legend()
+
+def draw_ciemat(filename, angle):
+    angle = str(angle)
+    data = tools.process_ciemat(filename)
+    plt.plot(data["WL"], data[angle], label="CIEMAT " + angle + " º")
+    plt.legend()
