@@ -14,6 +14,12 @@ def T(dataset, DCT):
     T = (dataset["TF"]-DCT)/(dataset["TNF"]-DCT)
     return T*100
 
+def T_data(dataset, DCT):
+    T = (dataset["TF"]-DCT)/(dataset["TNF"]-DCT)
+    WL = dataset["WL"]
+    data = pd.DataFrame(WL, T, names=["WL", "T"])
+    return data
+
 def QE(PMT):
     path= os.path.dirname(os.path.dirname(os.getcwd()))
     text_files = glob.glob(path + "/**/" + str(PMT) + ".txt", recursive = True)

@@ -38,8 +38,8 @@ def draw_A(dataset, PMT_T, PMT_R, DCT, DCR, ID):
         plt.ylabel("Absorbance %")
         plt.legend()
 
-def draw_ciemat(filename, angle):
+def draw_ciemat(dataset, angle):
     angle = str(angle)
-    data = tools.process_ciemat(filename)
-    plt.plot(data["WL"], data[angle], label="CIEMAT " + angle + " º")
-    plt.legend()
+    for data in dataset:
+        plt.plot(data["WL"], data[angle], label="CIEMAT " + angle + " º")
+        plt.legend()
