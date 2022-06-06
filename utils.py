@@ -17,7 +17,7 @@ def T(dataset, DCT):
 def T_data(dataset, DCT):
     T = (dataset["TF"]-DCT)/(dataset["TNF"]-DCT)
     WL = dataset["WL"]
-    data = pd.DataFrame(WL, T, names=["WL", "T"])
+    data = pd.DataFrame(WL, T)
     return data
 
 def QE(PMT):

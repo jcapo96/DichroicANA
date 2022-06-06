@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 import utils, tools
 from core import selections
 
@@ -7,6 +8,7 @@ def draw_T(dataset, DCT, ID):
     for data in dataset:
         T = utils.T(data, DCT[cnt_files])
         WL = data["WL"]
+        np.savetxt("/Users/jcapo/Documents/DICHROIC/AnaDichroic/PE_DATA.txt", np.c_[WL, T])
         plt.plot(WL, T, "o", label="Filter ID: " + ID[cnt_files])
         plt.xlabel("Wavelength (nm)")
         plt.ylabel("Transmittance %")
@@ -42,4 +44,5 @@ def draw_ciemat(dataset, angle):
     angle = str(angle)
     for data in dataset:
         plt.plot(data["WL"], data[angle], label="CIEMAT " + angle + " º")
+        np.savetxt("/Users/jcapo/Documents/DICHROIC/AnaDichroic/PE_DATA.txt", np.c_[data["WL"], data[angle]])
         plt.legend()
